@@ -10,7 +10,7 @@ datePattern = re.compile(r"""^(.*?)
 
 #Todo: Loop over files in the working directory
 
-for amerFilename in os.listdir('.'):
+for amerFilename in os.listdir('C:\\Users\\ISAN\\PycharmProjects\RenamingFiles-to-Europ-Style-Date'):
     mo = datePattern.search(amerFilename)
 
     #Skip files without a date.
@@ -28,9 +28,14 @@ for amerFilename in os.listdir('.'):
 
 #Todo: Form the European-style filename
 
-euroFilenam= beforePart +  dayPart + '-' + monthPart + '-' + yearPart + afterPart
+euroFilename= beforePart +  dayPart + '-' + monthPart + '-' + yearPart + afterPart
 
 #Todo: Get the full, absolute file paths
 
+absWorkingDir = os.path.abspath('.')
+amerFilename = os.path.join(absWorkingDir,amerFilename)
+euroFilename = os.path.join(absWorkingDir,euroFilename)
 
 #Todo: Rename the files
+print('Renaming "%s" to "%s"...' %(amerFilename,euroFilename))
+shutil.move(amerFilename,euroFilename)
